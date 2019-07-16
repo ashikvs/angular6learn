@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {MyService} from '../../../service/myservice.service';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   providers: [ MyService ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements  OnInit {
+ public transform(val )  {
+    debugger
+    return val;
+ }
   todaydate;
+  users:[];
 
   constructor(
     private myservice:MyService
@@ -22,7 +29,10 @@ export class HomeComponent implements OnInit {
   }
 
   getData(){
-    this.myservice.getData().subscribe(heroes => console.log(heroes));;
+    this.myservice.getData().subscribe((res :[])=>{
+      console.log(res)
+      this.users=res;
+  });
 
 
 
